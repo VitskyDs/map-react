@@ -2,27 +2,99 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+/* Header */
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
   color: white;
 }
 
+#menu-button {
+  position: absolute;
+  left: 16px;
+  height: 40px;
+  width: 28px;
+  background: transparent url('./img/hamburger-icon.svg') center center no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+
 .App-title {
-  font-size: 1.5em;
+  margin: 0;
+  font-size: 28px;
+  line-height: 40px;
 }
 
-.App-intro {
-  font-size: large;
+/* Map */
+
+#map {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: 100vw;
+  height: calc(100% - 40px);
+  background-color: gray;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Sidebar */
+
+#sidebar {
+  position: absolute;
+  width: 280px;
+  left: -280px;
+  box-sizing: border-box;
+  top: 56px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+#sidebar .search {
+  padding: 0;
+  margin: 0 0 8px 0;
+}
+
+#sidebar .search input {
+  width: 100%;
+  border: 1px solid;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+#sidebar .results {}
+
+#sidebar .results ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+#sidebar .results ol li {
+  padding: 12px 8px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+#sidebar .results ol li:hover {
+  background-color: #ddd;
+}
+
+#sidebar .results ol li:last-of-type {
+  border-bottom: none;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 525px) {
+  #menu-button {
+    display: none;
+  }
+  #sidebar {
+    left: 16px;
+  }
 }

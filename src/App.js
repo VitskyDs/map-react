@@ -8,12 +8,29 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <button type="button" id="menu-button"></button>
+          <h1 className="App-title">JLM Hotspots</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div id="map"></div>
+        <div id="sidebar">
+          <div className="search">
+            <input
+                type="text"
+                placeholder="Filter by name"
+                value=''
+                onChange=''/>
+          </div>
+          <div className="results">
+            <ol>
+              <li>Mahane Yehuda</li>
+              <li>Blumfield Garden</li>
+              <li>Western Wall</li>
+              <li>Church of the Holy Sepulchre</li>
+              <li>Zion Square</li>
+              <li>HaRav Shlomo Asaf Square</li>
+            </ol>
+          </div>
+        </div>
       </div>
     );
   }
