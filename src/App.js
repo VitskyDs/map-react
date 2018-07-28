@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Map from './Map.js'
 import './App.css';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
           <button type="button" id="menu-button"></button>
           <h1 className="App-title">JLM Hotspots</h1>
         </header>
-        <div id="map"></div>
+        <Map/>
         <div id="sidebar">
           <div className="search">
             <input
