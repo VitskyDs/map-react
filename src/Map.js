@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 class Map extends Component {
 
    render() {
 
-   const GoogleMapExample = withGoogleMap(props => (
+   const JlmMap = withGoogleMap(props => (
       <GoogleMap
         defaultCenter = { { lat: 31.7824533, lng: 35.1966413 } }
         defaultZoom = { 14 }
       >
+        {this.props.locations.map( location => {
+          return <Marker position={{ lat: location.lat , lng: location.lng}}/>
+        })}
+
       </GoogleMap>
    ));
 
+  <JlmMap />
    return(
       <div>
-        <GoogleMapExample
-          containerElement={ <div id="map-container" style={{  }} /> }
+        <JlmMap
+          containerElement={ <div id="map-container"/> }
           mapElement={ <div id="map" /> }
         />
       </div>
