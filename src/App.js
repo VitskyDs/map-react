@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Map from './Map.js'
+import Map from './Map-2.js'
 import LocationList from './Locations.js'
 import './App.css';
 
@@ -44,20 +44,28 @@ class App extends Component {
         category: 'religious'
       }
     ],
-    selectedCategory: 'all'
+    selectedCategory: 'all',
+    filteredLocations: []
   }
 
   filterCategory = (category) => {
     this.setState({selectedCategory : category})
+    this.setState({filteredLocations: this.state.locations.filter(location => location.category === category)})
   }
 
+  componentDidMount(){
+    this.setState({filteredLocations: this.state.locations})
+  }
+
+
   render() {
+
     return (<div className="App">
       <header className="App-header">
         <button type="button" id="menu-button"></button>
         <h1 className="App-title">JLM Hotspots</h1>
       </header>
-      <Map locations={this.state.locations} selectedCategory={this.state.selectedCategory}/>
+      <Map locations={this.state.filteredLocations} />
       <div id="sidebar">
         <div className="search">
           <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.filterCategory(event.target.value)}>
@@ -68,7 +76,7 @@ class App extends Component {
           </select>
         </div>
         <div className="results">
-        <LocationList locations={this.state.locations} selectedCategory={this.state.selectedCategory}/>
+          <LocationList locations={this.state.filteredLocations} />
         </div>
       </div>
     </div>);
