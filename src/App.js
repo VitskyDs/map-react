@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Map from './Map.js'
+import LocationList from './Locations.js'
 import './App.css';
 
 class App extends Component {
@@ -50,8 +51,6 @@ class App extends Component {
     this.setState({selectedCategory : category})
   }
 
-  filterMarker = () => {}
-
   render() {
     return (<div className="App">
       <header className="App-header">
@@ -68,14 +67,7 @@ class App extends Component {
           </select>
         </div>
         <div className="results">
-          <ol>
-            <li>Mahane Yehuda</li>
-            <li>Blumfield Garden</li>
-            <li>Western Wall</li>
-            <li>Church of the Holy Sepulchre</li>
-            <li>Zion Square</li>
-            <li>Temple Mount</li>
-          </ol>
+        <LocationList locations={this.state.locations} selectedCategory={this.state.selectedCategory}/>
         </div>
       </div>
     </div>);
