@@ -44,7 +44,7 @@ class App extends Component {
         category: 'religious'
       }
     ],
-    selectedCategory: ''
+    selectedCategory: 'all'
   }
 
   filterCategory = (category) => {
@@ -61,6 +61,7 @@ class App extends Component {
       <div id="sidebar">
         <div className="search">
           <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.filterCategory(event.target.value)}>
+            <option value="all">All Locations</option>
             <option value="secular">Secular</option>
             <option value="religious">Religious</option>
             <option value="hangout">Hangout</option>

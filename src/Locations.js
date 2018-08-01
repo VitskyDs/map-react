@@ -5,7 +5,7 @@ function Locations(props) {
   let locationsToRender = props.locations;
   console.log(locationsToRender);
 
-  if (props.selectedCategory !== '') {
+  if (props.selectedCategory !== 'all') {
     locationsToRender = props.locations.filter(location => location.category === props.selectedCategory)
   }
 

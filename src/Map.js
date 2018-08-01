@@ -8,7 +8,7 @@ class Map extends Component {
     let locationsToRender = this.props.locations;
     console.log(locationsToRender);
 
-    if (this.props.selectedCategory !== '') {
+    if (this.props.selectedCategory !== 'all') {
       locationsToRender = this.props.locations.filter(location => location.category === this.props.selectedCategory)
     }
 
