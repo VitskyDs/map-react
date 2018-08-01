@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 function Locations(props) {
 
+  // in case there is a category chose, filter the locations array
   let locationsToRender = props.locations;
   console.log(locationsToRender);
 
@@ -12,11 +13,7 @@ function Locations(props) {
   return (
     <ol>
       {
-        locationsToRender.map( (location) => {
-          return (
-            <li key={location.id}>{location.name}</li>
-          )
-        })
+        locationsToRender.map( location =>  <li key={location.id}>{location.name}</li> )
       }
     </ol>
   )
