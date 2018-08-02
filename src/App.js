@@ -67,7 +67,7 @@ class App extends Component {
         <button type="button" id="menu-button"></button>
         <h1 className="App-title">JLM Hotspots</h1>
       </header>
-      <Map locations={this.state.filteredLocations} />
+      <Mapbox locations={this.state.filteredLocations} />
       <div id="sidebar">
         <div className="search">
           <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.filterCategory(event.target.value)}>
