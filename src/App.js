@@ -50,13 +50,15 @@ class App extends Component {
 
   filterCategory = (category) => {
     this.setState({selectedCategory : category})
-    this.setState({filteredLocations: this.state.locations.filter(location => location.category === category)})
+    if (category === 'all') {
+      this.setState({filteredLocations: this.state.locations})
+    } else {
+      this.setState({filteredLocations: this.state.locations.filter(location => location.category === category)})}
   }
 
   componentDidMount(){
     this.setState({filteredLocations: this.state.locations})
   }
-
 
   render() {
 

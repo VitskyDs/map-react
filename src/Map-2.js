@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-
 const MapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultCenter={{
@@ -18,10 +17,9 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
             lng: location.lng
           }}
         onClick={props.onMarkerClick}
-
-        />)})
+      />)})
     }
-
+    
   </GoogleMap>
 ))
 
@@ -40,8 +38,8 @@ class Map extends React.PureComponent {
     }, 3000)
   }
 
-  handleMarkerClick = () => {
-    console.log(this)
+  handleMarkerClick = (event) => {
+    console.log(event)
   }
 
   render() {
