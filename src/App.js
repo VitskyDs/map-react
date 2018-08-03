@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Map from './Map-2.js'
 import LocationList from './Locations.js'
+import Foursquare from './Foursquare.js'
 import './App.css';
 
 class App extends Component {
@@ -8,7 +9,7 @@ class App extends Component {
     locations: [
       {
         name: 'Mahane Yehuda',
-        id: '1',
+        id: '4b7e63c5f964a5202aeb2fe3',
         lat: 31.785556,
         lng: 35.2100333,
         category: 'secular'
@@ -67,7 +68,7 @@ class App extends Component {
         <button type="button" id="menu-button"></button>
         <h1 className="App-title">JLM Hotspots</h1>
       </header>
-      <Mapbox locations={this.state.filteredLocations} />
+      <Foursquare locations={this.state.filteredLocations} />
       <div id="sidebar">
         <div className="search">
           <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.filterCategory(event.target.value)}>

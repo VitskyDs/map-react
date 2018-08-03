@@ -61,13 +61,14 @@
   margin: 0 0 8px 0;
 }
 
-#sidebar .search input {
+#sidebar .search select {
   width: 100%;
   border: 1px solid;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 3px;
   padding: 12px;
   box-sizing: border-box;
+  height: 32px;
 }
 
 #sidebar .results {}
@@ -86,7 +87,7 @@
 }
 
 #sidebar .results ol li:hover {
-  background-color: #ddd;
+  background-color: #dee;
 }
 
 #sidebar .results ol li:last-of-type {
