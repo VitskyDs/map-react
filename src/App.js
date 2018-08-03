@@ -46,7 +46,8 @@ class App extends Component {
       }
     ],
     selectedCategory: 'all',
-    filteredLocations: []
+    filteredLocations: [],
+    chosenLocation: ''
   }
 
   filterCategory = (category) => {
@@ -63,26 +64,28 @@ class App extends Component {
 
   render() {
 
-    return (<div className="App">
-      <header className="App-header">
-        <button type="button" id="menu-button"></button>
-        <h1 className="App-title">JLM Hotspots</h1>
-      </header>
-      <Foursquare locations={this.state.filteredLocations} />
-      <div id="sidebar">
-        <div className="search">
-          <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.filterCategory(event.target.value)}>
-            <option value="all">All Locations</option>
-            <option value="secular">Secular</option>
-            <option value="religious">Religious</option>
-            <option value="hangout">Hangout</option>
-          </select>
+    return (
+      <div className="App">
+        <header className="App-header">
+          <button type="button" id="menu-button"></button>
+          <h1 className="App-title">JLM Hotspots</h1>
+        </header>
+        <Map locations={this.state.filteredLocations} />
+        <div id="sidebar">
+          <div className="search">
+            <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.filterCategory(event.target.value)}>
+              <option value="all">All Locations</option>
+              <option value="secular">Secular</option>
+              <option value="religious">Religious</option>
+              <option value="hangout">Hangout</option>
+            </select>
+          </div>
+          <div className="results">
+            <LocationList locations={this.state.filteredLocations} />
+          </div>
         </div>
-        <div className="results">
-          <LocationList locations={this.state.filteredLocations} />
-        </div>
-      </div>
-    </div>);
+        <Foursquare locations={this.state.chosenLocation} />
+      </div>);
   }
 }
 

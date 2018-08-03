@@ -25,7 +25,7 @@ class FoursquareDemo extends Component {
   componentDidMount() {
     foursquare.venues.getVenue(params)
       .then(res=> {
-        this.setState({ items: res.response.venue, image: `${res.response.venue.bestPhoto.prefix}612x612${res.response.venue.bestPhoto.suffix} `});
+        this.setState({ items: res.response.venue, likes: res.response.venue.likes.count, image: `${res.response.venue.bestPhoto.prefix}612x612${res.response.venue.bestPhoto.suffix} `});
         console.log(res.response);
       });
   }
@@ -34,9 +34,9 @@ class FoursquareDemo extends Component {
     return (
     <div className="location-box">
       <div className="location-title">{this.state.items.name}</div>
-      <div className="location-likes">{this.state.items.name}</div>
+      <div className="location-likes">{this.state.likes}</div>
       <div className="location-rating">{this.state.items.rating}</div>
-        <img className="location-image" src={this.state.image}  />
+      <img className="location-image" src={this.state.image}  />
     </div>
   )
   }

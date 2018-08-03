@@ -1,5 +1,16 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100vh !important;
+  overflow: hidden;
+  background-color: gray;
 }
 
 /* Header */
@@ -7,6 +18,8 @@
 .App-header {
   background-color: #222;
   color: white;
+  z-index: 100;
+  position: relative;
 }
 
 #menu-button {
@@ -66,7 +79,7 @@
   border: 1px solid;
   font-size: 14px;
   border-radius: 3px;
-  padding: 12px;
+  padding: 4px;
   box-sizing: border-box;
   height: 32px;
 }
@@ -81,9 +94,10 @@
 }
 
 #sidebar .results ol li {
-  padding: 12px 8px;
+  padding: 8px 8px;
   border-bottom: 1px solid #ccc;
   cursor: pointer;
+  font-size: 14px;
 }
 
 #sidebar .results ol li:hover {
@@ -92,6 +106,35 @@
 
 #sidebar .results ol li:last-of-type {
   border-bottom: none;
+}
+
+.location-box {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 280px;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.location-box .location-title {}
+
+.location-box .location-likes {
+  flex-basis: 50%;
+}
+
+.location-box .location-rating {
+  flex-basis: 50%;
+}
+
+.location-box .location-image {
+  max-height: 240px;
 }
 
 /* Media Queries */
