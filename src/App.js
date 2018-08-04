@@ -82,7 +82,9 @@ class App extends Component {
     })
   }
 
-  handleLocationClick = (event, latlng, index) => {}
+  handleLocationClick = (event, location) => {
+    this.onItemClick(location.id)
+  }
 
   handleFilter = (category) => {
     this.setState({selectedCategory: category})
