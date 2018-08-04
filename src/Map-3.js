@@ -3,40 +3,26 @@ import CompositeGoogleMap from './ComposeMap.js'
 
 class Map extends Component {
 
-  state = {
-    markers: [],
-    center: {}
-  }
-
   render() {
-    let { onMarkerClick, showInfoIndex, markerIcon } = this.props
 
-    let onLocationClicked = (event, markerLocation, index) => {
-      this.props.onMarkerClick(event, markerLocation, index)
-    }
+    let markers = [],
+    marker = {}
 
-    let markers = []
-    let marker = {}
-
-    this.props.locations.map((loc) => {
+    this.props.locations.map((location) => {
       marker = {
-        lat: loc.lat,
-        lng: loc.lng,
-        title: loc.name,
-        venue_id: loc.id
+        lat: location.lat,
+        lng: location.lng,
+        venue_id: location.id
       }
       markers.push(marker)
     })
-
-    return (<div>
+    return (
       <CompositeGoogleMap
-        markers = {markers}
-        onMarkerClicked = {onLocationClicked}
-        showInfoIndex = {showInfoIndex}
-        markerIcon = {markerIcon}
-       />
-    </div>);
-
+        markers={markers}
+        onMarkerClicked={this.props.onMarkerClick}
+        showInfoIndex={this.props.showInfoIndex}
+        markerIcon={this.props.markerIcon}
+    />);
   }
 };
 

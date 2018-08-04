@@ -52,8 +52,8 @@ class App extends Component {
     modifiedCenter: {},
     defaultZoom: 14,
     modifiedZoom: 16,
-    defaultMarkerIcon: 'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png',
-    modifiedMarkerIcon: 'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png',
+    markerIcon: 'https://i.imgur.com/6G3c306.png',
+    modifiedMarkerIcon: 'https://i.imgur.com/dDJCFax.png',
     showMarkerIndex: 0,
     selectedCategory: 'all',
     filteredLocations: [],
@@ -68,19 +68,11 @@ class App extends Component {
   }
 
   handleMarkerClick = (event, latlng, index) => {
-
+    debugger
     this.setState({
       showInfoIndex: index.index,
-      modifiedMarkerIcon: {
-        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-        fillColor: 'yellow',
-        fillOpacity: 0.8,
-        scale: 0.1,
-        strokeColor: 'gold',
-        strokeWeight: 3
-      }
+      markerIcon: 'https://i.imgur.com/dDJCFax.png'
     })
-
   }
 
   //show or hide menu
@@ -114,11 +106,20 @@ class App extends Component {
         <button type="button" id="menu-button"></button>
         <h1 className="App-title">JLM Hotspots</h1>
       </header>
-      <Map locations={this.state.filteredLocations}
-        onMarkerClick={this.handleMarkerClick} onHandleLocationSelected={this.handleLocationSelected} showInfoIndex={this.state.showInfoIndex} markerIcon={this.state.markerIcon}/>
+      <Map
+        locations={this.state.filteredLocations}
+        onMarkerClick={this.handleMarkerClick}
+        onHandleLocationSelected={this.handleLocationSelected}
+        showInfoIndex={this.state.showInfoIndex}
+        markerIcon={this.state.markerIcon}
+      />
       <div id="sidebar">
         <div className="search">
-          <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.handleFilter(event.target.value)}>
+          <select
+            type="text"
+            placeholder="Select category"
+            value={this.state.selectedCategory}
+            onChange={(event) => this.handleFilter(event.target.value)}>
             <option value="all">All Locations</option>
             <option value="secular">Secular</option>
             <option value="religious">Religious</option>
@@ -126,7 +127,10 @@ class App extends Component {
           </select>
         </div>
         <div className="results">
-          <LocationList locations={this.state.filteredLocations} onItemClick={this.onItemClick}/>
+          <LocationList
+            locations={this.state.filteredLocations}
+            onMarkerClick={this.handleMarkerClick}
+            onItemClick={this.onItemClick}/>
         </div>
       </div>
       <Foursquare venue_id={this.state.chosenLocation}/>
