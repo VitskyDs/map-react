@@ -1,45 +1,45 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-var foursquare = require('react-foursquare')({
-  clientID: 'SBNJXJYGDIHGJNQZU2GQ4B5RKPFSL12BYBFVAQ1JG0HMP2MD',
-  clientSecret: 'V30VCXEPBYBPNATBSM1L0JGPXDLM5MJME1UEMSPEGB2YWRN5'
-});
+var foursquare = require('react-foursquare')({clientID: 'SBNJXJYGDIHGJNQZU2GQ4B5RKPFSL12BYBFVAQ1JG0HMP2MD', clientSecret: 'V30VCXEPBYBPNATBSM1L0JGPXDLM5MJME1UEMSPEGB2YWRN5'});
 
 var params = {
-  "ll": "31.785556, 35.2100333",
-  "venue_id": '4b7e63c5f964a5202aeb2fe3'
+  "venue_id": ''
 };
 
-var id = '4b7e63c5f964a5202aeb2fe3';
+class Foursquare extends Component {
 
-class FoursquareDemo extends Component {
+  state = {
+    "venue_id": {
+      "venue_id": ''
+    },
+    items: []
+  };
 
-  constructor(props) {
-     super(props);
-     this.state = {
-       items: []
-     };
-   }
+  componentWillReceiveProps(nextProps) {
 
-  componentDidMount() {
-    foursquare.venues.getVenue(params)
-      .then(res=> {
-        this.setState({ items: res.response.venue, likes: res.response.venue.likes.count, image: `${res.response.venue.bestPhoto.prefix}612x612${res.response.venue.bestPhoto.suffix} `});
+    if (nextProps.venue_id !== '') {
+      params = {"venue_id": nextProps.venue_id}
+      this.setState({venue_id: nextProps.venue_id});
+      foursquare.venues.getVenue(params).then(res => {
+        this.setState({items: res.response.venue, image: `${res.response.venue.bestPhoto.prefix}612x612${res.response.venue.bestPhoto.suffix} `});
         console.log(res.response);
       });
+    }
   }
 
   render() {
-    return (
-    <div className="location-box">
+    if (this.state.venue_id.venue_id !== '') {
+    return (<div className="location-box">
       <div className="location-title">{this.state.items.name}</div>
-      <div className="location-likes">{this.state.likes}</div>
       <div className="location-rating">{this.state.items.rating}</div>
-      <img className="location-image" src={this.state.image}  />
-    </div>
-  )
+      <img className="location-image" src={this.state.image}/>
+    </div>)
+  } else {
+    return <div></div>
+  }
+
   }
 }
 
-export default FoursquareDemo
+export default Foursquare

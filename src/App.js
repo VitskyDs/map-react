@@ -14,32 +14,32 @@ class App extends Component {
         lng: 35.2100333,
         category: 'secular'
       }, {
-        name: 'Blumfield Garden',
-        id: '2',
+        name: 'Western Wall Tunnel',
+        id: '5714efd1498eb520fae237cb',
         lat: 31.772415,
         lng: 35.2211988,
         category: 'hangout'
       }, {
         name: 'Western Wall',
-        id: '3',
+        id: '4b896c78f964a520ff3432e3',
         lat: 31.7767189,
         lng: 35.2323198,
         category: 'religious'
       }, {
         name: 'Church of the Holy Sepulchre',
-        id: '4',
+        id: '4b599fc5f964a5207d8f28e3',
         lat: 31.7784813,
         lng: 35.2274115,
         category: 'religious'
       }, {
         name: 'Zion Square',
-        id: '5',
+        id: '4b7325faf964a520569e2de3',
         lat: 31.7819264,
         lng: 35.2174048,
         category: 'hangout'
       }, {
         name: 'Temple Mount',
-        id: '6',
+        id: '4fe5c6f2e4b051b5c1cd5c51',
         lat: 31.7786754,
         lng: 35.230610,
         category: 'religious'
@@ -62,6 +62,10 @@ class App extends Component {
     this.setState({filteredLocations: this.state.locations})
   }
 
+  onItemClick = (location) => {
+    this.setState({chosenLocation: location})
+  }
+
   render() {
 
     return (
@@ -81,10 +85,11 @@ class App extends Component {
             </select>
           </div>
           <div className="results">
-            <LocationList locations={this.state.filteredLocations} />
+            <LocationList locations={this.state.filteredLocations}
+            onItemClick={this.onItemClick} />
           </div>
         </div>
-        <Foursquare locations={this.state.chosenLocation} />
+        <Foursquare venue_id={this.state.chosenLocation} />
       </div>);
   }
 }
