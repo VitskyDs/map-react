@@ -45,21 +45,62 @@ class App extends Component {
         category: 'religious'
       }
     ],
+    defaultCenter: {
+      lat: 31.7824533,
+      lng: 35.1966413
+    },
+    modifiedCenter: {},
+    defaultZoom: 14,
+    modifiedZoom: 16,
+    defaultMarkerIcon: 'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png',
+    modifiedMarkerIcon: 'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png',
+    showMarkerIndex: 0,
     selectedCategory: 'all',
     filteredLocations: [],
-    chosenLocation: ''
+    chosenLocation: '',
+    toggleMenu: false,
+    showInfoIndex: -1
   }
 
-  filterCategory = (category) => {
-    this.setState({selectedCategory : category})
+  //sets filteredLocations to the initial state of all locations
+  componentDidMount() {
+    this.setState({filteredLocations: this.state.locations})
+  }
+
+  handleMarkerClick = (event, latlng, index) => {
+
+    this.setState({
+      showInfoIndex: index.index,
+      modifiedMarkerIcon: {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        fillColor: 'yellow',
+        fillOpacity: 0.8,
+        scale: 0.1,
+        strokeColor: 'gold',
+        strokeWeight: 3
+      }
+    })
+
+  }
+
+  //show or hide menu
+  handleToggleMenu = () => {
+    this.setState({
+      toggleMenu: !this.state.toggleMenu
+    })
+  }
+
+  handleLocationClick = (event, latlng, index) => {}
+
+  handleFilter = (category) => {
+    this.setState({selectedCategory: category})
     if (category === 'all') {
       this.setState({filteredLocations: this.state.locations})
     } else {
-      this.setState({filteredLocations: this.state.locations.filter(location => location.category === category)})}
-  }
-
-  componentDidMount(){
-    this.setState({filteredLocations: this.state.locations})
+      this.setState({
+        filteredLocations: this.state.locations.filter(location => location.category === category)
+      })
+    }
   }
 
   onItemClick = (location) => {
@@ -68,29 +109,28 @@ class App extends Component {
 
   render() {
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <button type="button" id="menu-button"></button>
-          <h1 className="App-title">JLM Hotspots</h1>
-        </header>
-        <Map locations={this.state.filteredLocations} />
-        <div id="sidebar">
-          <div className="search">
-            <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.filterCategory(event.target.value)}>
-              <option value="all">All Locations</option>
-              <option value="secular">Secular</option>
-              <option value="religious">Religious</option>
-              <option value="hangout">Hangout</option>
-            </select>
-          </div>
-          <div className="results">
-            <LocationList locations={this.state.filteredLocations}
-            onItemClick={this.onItemClick} />
-          </div>
+    return (<div className="App">
+      <header className="App-header">
+        <button type="button" id="menu-button"></button>
+        <h1 className="App-title">JLM Hotspots</h1>
+      </header>
+      <Map locations={this.state.filteredLocations}
+        onMarkerClick={this.handleMarkerClick} onHandleLocationSelected={this.handleLocationSelected} showInfoIndex={this.state.showInfoIndex} markerIcon={this.state.markerIcon}/>
+      <div id="sidebar">
+        <div className="search">
+          <select type="text" placeholder="Select category" value={this.state.selectedCategory} onChange={(event) => this.handleFilter(event.target.value)}>
+            <option value="all">All Locations</option>
+            <option value="secular">Secular</option>
+            <option value="religious">Religious</option>
+            <option value="hangout">Hangout</option>
+          </select>
         </div>
-        <Foursquare venue_id={this.state.chosenLocation} />
-      </div>);
+        <div className="results">
+          <LocationList locations={this.state.filteredLocations} onItemClick={this.onItemClick}/>
+        </div>
+      </div>
+      <Foursquare venue_id={this.state.chosenLocation}/>
+    </div>);
   }
 }
 

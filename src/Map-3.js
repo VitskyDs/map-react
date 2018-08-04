@@ -1,33 +1,43 @@
-import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import React, {Component} from 'react';
+import CompositeGoogleMap from './ComposeMap.js'
 
 class Map extends Component {
 
-   render() {
+  state = {
+    markers: [],
+    center: {}
+  }
 
-   const GoogleMapExample = withGoogleMap(props => (
-      <GoogleMap
-        defaultCenter={{
-          lat: 31.7824533,
-          lng: 35.1966413
-        }} defaultZoom={14}
-      >
-      </GoogleMap>
-   ));
+  render() {
+    let { onMarkerClick, showInfoIndex, markerIcon } = this.props
 
-   return(
-      <div>
-        <GoogleMapExample
-          loadingElement={ <div style={{height: `100%`}}/> }
-          containerElement={ <div id="map-container"/> }
-          mapElement={ <div id="map"/> }
-          locations={this.props.locations}
-          onMarkerClick={this.handleMarkerClick}
-        />
-      </div>
-   );
+    let onLocationClicked = (event, markerLocation, index) => {
+      this.props.onMarkerClick(event, markerLocation, index)
+    }
 
-   }
+    let markers = []
+    let marker = {}
+
+    this.props.locations.map((loc) => {
+      marker = {
+        lat: loc.lat,
+        lng: loc.lng,
+        title: loc.name,
+        venue_id: loc.id
+      }
+      markers.push(marker)
+    })
+
+    return (<div>
+      <CompositeGoogleMap
+        markers = {markers}
+        onMarkerClicked = {onLocationClicked}
+        showInfoIndex = {showInfoIndex}
+        markerIcon = {markerIcon}
+       />
+    </div>);
+
+  }
 };
 
 export default Map;

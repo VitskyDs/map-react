@@ -19,7 +19,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
         onClick={props.onMarkerClick}
       />)})
     }
-    
+
   </GoogleMap>
 ))
 
@@ -45,7 +45,7 @@ class Map extends React.PureComponent {
   render() {
     return (
       <MapComponent
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_cm4XvzXaPXeMOQxzV6pLJvJ32COOH_M"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6e6nqP_9BdDKnOhcO3pBG6e4qXAELWz8"
         loadingElement={ <div style={{height: `100%`}}/> }
         containerElement={ <div id="map-container"/> }
         mapElement={ <div id="map"/> }
