@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Map from './Components/Map.js'
 import LocationList from './Components/Locations.js'
 import Foursquare from './Components/Foursquare.js'
+import Header from './Components/Header.js'
 import './App.css';
 
 class App extends Component {
@@ -74,7 +75,6 @@ class App extends Component {
   }
 
   handleMarkerClick = (event, latlng, index) => {
-    //debugger
     this.setState({
       showInfoIndex: index.index,
       markerIcon: 'https://i.imgur.com/K0r44EI.png'
@@ -86,11 +86,8 @@ class App extends Component {
     this.setState({
       toggleMenu: !this.state.toggleMenu
     })
+    document.getElementById('sidebar').classList.toggle('menu-open')
   }
-  //
-  // handleLocationClick = (event, location) => {
-  //   this.onItemClick(location.id)
-  // }
 
   handleFilter = (category) => {
     this.setState({selectedCategory: category, showInfoIndex: -1, chosenLocation: ''})
@@ -110,10 +107,8 @@ class App extends Component {
   render() {
 
     return (<div className="App">
-      <header className="App-header">
-        <button type="button" id="menu-button"></button>
-        <h1 className="App-title">JLM Hotspots</h1>
-      </header>
+      <Header handleToggleMenu={this.handleToggleMenu} />
+
       <Map
         locations={this.state.filteredLocations}
         onMarkerClick={this.handleMarkerClick}

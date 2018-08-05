@@ -67,6 +67,11 @@ body {
   background-color: white;
   border-radius: 3px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+  transition: all 250ms ease-in-out;
+}
+
+#sidebar.menu-open {
+  left: 16px;
 }
 
 #sidebar .search {
@@ -123,18 +128,26 @@ body {
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
 }
 
-.location-box .location-title {}
-
-.location-box .location-likes {
-  flex-basis: 50%;
+.location-box .location-title {
+  font-size: 20px;
+  line-height: 24px;
+  width: 100%;
+  text-align: center;
 }
 
 .location-box .location-rating {
-  flex-basis: 50%;
+  line-height: 24px;
+  width: 100%;
+  text-align: center;
+  background: teal;
+  color: white;
+  margin-top: 8px;
 }
 
 .location-box .location-image {
-  max-height: 240px;
+  margin-top: 8px;
+  max-width: 248px;
+  max-height: 248px;
 }
 
 /* Media Queries */
