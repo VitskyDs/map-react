@@ -19,7 +19,9 @@ class Foursquare extends Component {
   componentWillReceiveProps(nextProps) {
 
     if (nextProps.venue_id !== '') {
-      params = {"venue_id": nextProps.venue_id}
+      params = {
+        "venue_id": nextProps.venue_id
+      }
       this.setState({venue_id: nextProps.venue_id});
       foursquare.venues.getVenue(params).then(res => {
         this.setState({items: res.response.venue, image: `${res.response.venue.bestPhoto.prefix}612x612${res.response.venue.bestPhoto.suffix} `});
@@ -30,14 +32,14 @@ class Foursquare extends Component {
 
   render() {
     if (this.props.venue_id !== '') {
-    return (<div className="location-box">
-      <div className="location-title">{this.state.items.name}</div>
-      <div className="location-rating">{this.state.items.rating}</div>
-      <img className="location-image" src={this.state.image}/>
-    </div>)
-  } else {
-    return <div></div>
-  }
+      return (<div className="location-box">
+        <div className="location-title">{this.state.items.name}</div>
+        <div className="location-rating">{this.state.items.rating ?  ` Rating: ${this.state.items.rating}` : ''}</div>
+        <img className="location-image" src={this.state.image}/>
+      </div>)
+    } else {
+      return <div></div>
+    }
 
   }
 }
