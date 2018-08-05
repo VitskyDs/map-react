@@ -11,7 +11,7 @@ import {
 import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from 'react-google-maps'
 
 const ComposeMap = compose(withProps({
-  googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBY25ljeSm_3_Y89POlQa7DUZh-hffV0io", loadingElement: <div style={{
+  googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAgT6LQlgTKdYl-ocvCPHpIIP2-li-MM8Y", loadingElement: <div style={{
       height: `100%`
     }}/>,
   containerElement: <div id="map-container"/>,
