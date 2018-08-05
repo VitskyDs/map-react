@@ -11,7 +11,7 @@ import {
 import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from 'react-google-maps'
 
 const ComposeMap = compose(withProps({
-  googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBfB8UMdS7E9dAIHPW3HzKTkkjsMHg2i0I", loadingElement: <div style={{
+  googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDizKGb8jtfICQ-gk8OrnI7rcxguYEEBQo", loadingElement: <div style={{
       height: `100%`
     }}/>,
   containerElement: <div id="map-container"/>,
@@ -34,7 +34,7 @@ const ComposeMap = compose(withProps({
   }
 }), withScriptjs, withGoogleMap)(props => {
   let iconDefault = {
-    url: 'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png'
+    url: 'https://i.imgur.com/2Dux7jv.png'
   }
 
   return (<GoogleMap zoom={props.zoom} center={props.appCenter} mapTypeId='roadmap' ref={props.onMapMounted} onZoomChanged={props.onZoomChanged} onCenterChanged={props.onCenterChanged}>
