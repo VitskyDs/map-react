@@ -29,7 +29,7 @@ class Foursquare extends Component {
   }
 
   render() {
-    if (this.state.venue_id.venue_id !== '') {
+    if (this.props.venue_id !== '') {
     return (<div className="location-box">
       <div className="location-title">{this.state.items.name}</div>
       <div className="location-rating">{this.state.items.rating}</div>

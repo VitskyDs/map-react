@@ -87,13 +87,13 @@ class App extends Component {
       toggleMenu: !this.state.toggleMenu
     })
   }
-
-  handleLocationClick = (event, location) => {
-    this.onItemClick(location.id)
-  }
+  //
+  // handleLocationClick = (event, location) => {
+  //   this.onItemClick(location.id)
+  // }
 
   handleFilter = (category) => {
-    this.setState({selectedCategory: category})
+    this.setState({selectedCategory: category, showInfoIndex: -1, chosenLocation: ''})
     if (category === 'all') {
       this.setState({filteredLocations: this.state.locations})
     } else {
