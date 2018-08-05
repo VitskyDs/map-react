@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Map from './Map-3.js'
-import LocationList from './Locations.js'
-import Foursquare from './Foursquare.js'
+import Map from './Components/Map.js'
+import LocationList from './Components/Locations.js'
+import Foursquare from './Components/Foursquare.js'
 import './App.css';
 
 class App extends Component {
