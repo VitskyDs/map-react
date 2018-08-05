@@ -12,37 +12,43 @@ class App extends Component {
         id: '4b7e63c5f964a5202aeb2fe3',
         lat: 31.785556,
         lng: 35.2100333,
-        category: 'secular'
+        category: 'secular',
+        index: 0
       }, {
         name: 'Western Wall Tunnel',
         id: '5714efd1498eb520fae237cb',
         lat: 31.772415,
         lng: 35.2211988,
-        category: 'hangout'
+        category: 'hangout',
+        index: 1
       }, {
         name: 'Western Wall',
         id: '4b896c78f964a520ff3432e3',
         lat: 31.7767189,
         lng: 35.2323198,
-        category: 'religious'
+        category: 'religious',
+        index: 2
       }, {
         name: 'Church of the Holy Sepulchre',
         id: '4b599fc5f964a5207d8f28e3',
         lat: 31.7784813,
         lng: 35.2274115,
-        category: 'religious'
+        category: 'religious',
+        index: 3
       }, {
         name: 'Zion Square',
         id: '4b7325faf964a520569e2de3',
         lat: 31.7819264,
         lng: 35.2174048,
-        category: 'hangout'
+        category: 'hangout',
+        index: 4
       }, {
         name: 'Temple Mount',
         id: '4fe5c6f2e4b051b5c1cd5c51',
         lat: 31.7786754,
         lng: 35.230610,
-        category: 'religious'
+        category: 'religious',
+        index: 5
       }
     ],
     defaultCenter: {
@@ -52,8 +58,8 @@ class App extends Component {
     modifiedCenter: {},
     defaultZoom: 14,
     modifiedZoom: 16,
-    markerIcon: 'https://i.imgur.com/6G3c306.png',
-    modifiedMarkerIcon: 'https://i.imgur.com/dDJCFax.png',
+    markerIcon: 'https://i.imgur.com/K0r44EI.png',
+    modifiedMarkerIcon: 'https://i.imgur.com/K0r44EI.png',
     showMarkerIndex: 0,
     selectedCategory: 'all',
     filteredLocations: [],
@@ -68,10 +74,10 @@ class App extends Component {
   }
 
   handleMarkerClick = (event, latlng, index) => {
-    debugger
+    //debugger
     this.setState({
       showInfoIndex: index.index,
-      markerIcon: 'https://i.imgur.com/dDJCFax.png'
+      markerIcon: 'https://i.imgur.com/K0r44EI.png'
     })
   }
 
@@ -98,7 +104,7 @@ class App extends Component {
   }
 
   onItemClick = (location) => {
-    this.setState({chosenLocation: location})
+    this.setState({chosenLocation: location.id, showInfoIndex: location.index})
   }
 
   render() {
@@ -132,7 +138,8 @@ class App extends Component {
           <LocationList
             locations={this.state.filteredLocations}
             onMarkerClick={this.handleMarkerClick}
-            onItemClick={this.onItemClick}/>
+            onItemClick={this.onItemClick}
+            index={this.state.showInfoIndex}/>
         </div>
       </div>
       <Foursquare venue_id={this.state.chosenLocation}/>

@@ -23,12 +23,9 @@ const ComposeMap = compose(withProps({
   return {
     onMapMounted: () => ref => {
       refs.map = ref
-      //console.log("Zoom to markers");
       const bounds = new window.google.maps.LatLngBounds();
       ref.props.children.forEach((child) => {
-        // console.log('iterating over map children')
         if (child.type === Marker) {
-          //console.log('extending bounds for ', child.props.position.lat, child.props.position.lng)
           bounds.extend(new window.google.maps.LatLng(child.props.position.lat, child.props.position.lng));
         }
       })
@@ -49,7 +46,7 @@ const ComposeMap = compose(withProps({
           position={{lat: marker.lat,lng: marker.lng}}
           title={marker.title}
           onClick={(event) => {props.onMarkerClicked(event, {lat: marker.lat, lng: marker.lng}, {index})}}
-          animation={props.showInfoIndex === index? google.maps.Animation.BOUNCE : google.maps.Animation.DROP } />)
+          animation={props.showInfoIndex === index ? google.maps.Animation.BOUNCE : ''} />)
     )}
   </GoogleMap>
   )
