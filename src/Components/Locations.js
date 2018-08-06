@@ -5,7 +5,11 @@ function LocationList(props) {
 
   return (
     <ol>
-      {props.locations.map( location => <li onClick={(event) => props.onItemClick(location)} key={location.id} index={index++}>{location.name}</li>)}
+      {props.locations.map( location => <li
+        role="button"
+        tabIndex="0"
+        onClick={(event) => props.onItemClick(location)} key={location.id}
+        index={index++}>{location.name}</li>)}
     </ol>
   )
 };

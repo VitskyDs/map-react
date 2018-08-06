@@ -107,7 +107,7 @@ class App extends Component {
 
   render() {
 
-    return (<div className="App">
+    return (<main className="App">
       <Header handleToggleMenu={this.handleToggleMenu} />
 
       <Map
@@ -121,6 +121,8 @@ class App extends Component {
         <div className="search">
           <select
             type="text"
+            role="listbox"
+            tabindex="0"
             placeholder="Select category"
             value={this.state.selectedCategory}
             onChange={(event) => this.handleFilter(event.target.value)}>
@@ -139,7 +141,7 @@ class App extends Component {
         </div>
       </div>
       <Foursquare venue_id={this.state.chosenLocation}  infoIndex={this.state.showInfoIndex}/>
-    </div>);
+    </main>);
   }
 }
 
