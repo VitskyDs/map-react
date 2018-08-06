@@ -74,10 +74,11 @@ class App extends Component {
     this.setState({filteredLocations: this.state.locations})
   }
 
-  handleMarkerClick = (event, latlng, index) => {
+  handleMarkerClick = (event, latlng, id, index) => {
     this.setState({
       showInfoIndex: index.index,
-      markerIcon: 'https://i.imgur.com/K0r44EI.png'
+      markerIcon: 'https://i.imgur.com/K0r44EI.png',
+      chosenLocation: id
     })
   }
 
@@ -137,7 +138,7 @@ class App extends Component {
             index={this.state.showInfoIndex}/>
         </div>
       </div>
-      <Foursquare venue_id={this.state.chosenLocation}/>
+      <Foursquare venue_id={this.state.chosenLocation}  infoIndex={this.state.showInfoIndex}/>
     </div>);
   }
 }

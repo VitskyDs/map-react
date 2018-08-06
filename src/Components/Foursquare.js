@@ -18,7 +18,7 @@ class Foursquare extends Component {
 
   componentWillReceiveProps(nextProps) {
 
-    if (nextProps.venue_id !== '') {
+    if (nextProps.venue_id !== '' || nextProps.infoIndex !== this.props.infoIndex) {
       params = {
         "venue_id": nextProps.venue_id
       }

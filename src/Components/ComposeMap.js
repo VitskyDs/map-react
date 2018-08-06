@@ -45,7 +45,7 @@ const ComposeMap = compose(withProps({
           icon={props.showInfoIndex === index?  props.markerIcon : iconDefault}
           position={{lat: marker.lat,lng: marker.lng}}
           title={marker.title}
-          onClick={(event) => {props.onMarkerClicked(event, {lat: marker.lat, lng: marker.lng}, {index})}}
+          onClick={(event) => {props.onMarkerClicked(event, {lat: marker.lat, lng: marker.lng}, marker.venue_id, {index})}}
           animation={props.showInfoIndex === index ? google.maps.Animation.BOUNCE : ''} />)
     )}
   </GoogleMap>

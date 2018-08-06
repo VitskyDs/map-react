@@ -12,7 +12,7 @@ class Map extends Component {
       marker = {
         lat: location.lat,
         lng: location.lng,
-        venue_id: location.id
+        venue_id: location.id,
       }
       markers.push(marker)
     })
