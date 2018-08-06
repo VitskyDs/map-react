@@ -117,12 +117,12 @@ class App extends Component {
         showInfoIndex={this.state.showInfoIndex}
         markerIcon={this.state.markerIcon}
       />
-      <div id="sidebar">
+      <div id="sidebar" role="complementary">
         <div className="search">
           <select
             type="text"
             role="listbox"
-            tabindex="0"
+            tabIndex="0"
             placeholder="Select category"
             value={this.state.selectedCategory}
             onChange={(event) => this.handleFilter(event.target.value)}>

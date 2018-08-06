@@ -26,8 +26,9 @@ class Foursquare extends Component {
       if (nextProps.venue_id !== '') {
         foursquare.venues.getVenue(params).then(res => {
           this.setState({items: res.response.venue, image: `${res.response.venue.bestPhoto.prefix}612x612${res.response.venue.bestPhoto.suffix} `});
-          console.log(res.response);
-        });
+        }).catch( (error) => {
+          alert('Unable to retrieve information. Please check your connection.')
+          console.log(error)})
       }
     }
   }
@@ -42,7 +43,6 @@ class Foursquare extends Component {
     } else {
       return <div></div>
     }
-
   }
 }
 
