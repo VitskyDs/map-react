@@ -69,9 +69,15 @@ class App extends Component {
     showInfoIndex: -1
   }
 
+  //handles google maps error
+  gm_authFailure () {
+    window.alert("google Maps was unable to retrieve data. Please check connection.")
+  }
+
   //sets filteredLocations to the initial state of all locations
   componentDidMount() {
     this.setState({filteredLocations: this.state.locations})
+    window.gm_authFailure = this.gm_authFailure;
   }
 
   handleMarkerClick = (event, latlng, id, index) => {
