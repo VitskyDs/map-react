@@ -6,10 +6,10 @@ This project uses the Google Maps API for the map and markers and the Foursquare
 
 ## Instructions
 
-Download or clone this repository and then cd into it and run:
+Download or clone this repository. Change Directory into it and run:
 
-`yarn install`
-`yarn start`
+`npm run build`
+`serve -s build`
 
 ## Geeking out
 
